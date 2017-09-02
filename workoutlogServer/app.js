@@ -27,36 +27,36 @@ sequelize.authenticate().then( //Require sequelize authentication, .then says wh
 );
 
 
-app.listen(3000, function(){	//app object can now start a UNIX socket (two-way communication), setting up on
-	console.log("app is listening on port 3000");	//port 3000, which in this line, will print to the console.
-});
-
-
-
-
 //Below is a user model in Sequelize
-var user = sequelize.define("user",{
+var user = sequelize.define("user", {
 	username: Sequelize.STRING,
 	passwordhash: Sequelize.STRING,
 });
 
-//User.sync({ force:true });
+User.sync(); //This creates the table in Postgres, matches the model we defined, & doesn't drop the db
+//User({ force: true}) <-- this drops the table completely
 app.use(bodyParser.json());
 
 app.post("/api/user", function(req, res){
-	var username = req.body.user; //.username
-	var pass = req.body.user; //.password
-	//Need to create a user object and use sequelize to put that user into our database.
+	//Below, when we post to "/api/user", it'll want a user object in the body
+	var username = req.body.user.username;
+	var pass = req.body.user.password; //TODO: HASH this password. HASH means not readable by humans
+	
+	//Below, match the model we created above. Sequelize takes the user model and go out into the db 
+	//and create this:
 	User.create({
 		username: username,
 		passwordhash: ""
 	}).then(
-		//Below, a promise is created so Sequelize will return the object it created from the user db:
+		//Below, a promise is created so Sequelize will return the object it created from the user db.
 		function createSuccess(user){
-
+			res.json({
+				user: user,				//<---- If successful
+				message: "create"
+			});
 		},
 		function createError(err){
-
+			res.send(500, err.message);		//<----- If unsuccessful
 		}
 	);
 });
@@ -65,7 +65,9 @@ app.post("/api/user", function(req, res){
 
 
 
-
+app.listen(3000, function(){	//app object can now start a UNIX socket (two-way communication), setting up on
+	console.log("app is listening on port 3000");	//port 3000, which in this line, will print to the console.
+});
 
 
 
