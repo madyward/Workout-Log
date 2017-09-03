@@ -28,13 +28,13 @@ sequelize.authenticate().then( //Require sequelize authentication, .then says wh
 
 
 //Below is a user model in Sequelize
-var user = sequelize.define("user", {
+var User = sequelize.define("user", {
 	username: Sequelize.STRING,
 	passwordhash: Sequelize.STRING,
 });
 
 User.sync(); //This creates the table in Postgres, matches the model we defined, & doesn't drop the db
-//User({ force: true}) <-- this drops the table completely
+User.sync({ force: true}); <-- this drops the table completely
 app.use(bodyParser.json());
 
 app.post("/api/user", function(req, res){
