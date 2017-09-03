@@ -34,7 +34,12 @@ var User = sequelize.define("user", {
 });
 
 User.sync(); //This creates the table in Postgres, matches the model we defined, & doesn't drop the db
-User.sync({ force: true}); <-- this drops the table completely
+
+//*******************************
+// DANGER! THIS WILL DROP (DELETE) THE USER TABLE! 
+//User.sync({ force: true}) <-- this drops the table completely
+//*******************************
+
 app.use(bodyParser.json());
 
 app.post("/api/user", function(req, res){
