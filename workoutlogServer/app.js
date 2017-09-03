@@ -12,7 +12,7 @@ app.use("/api/test", function(req, res){	//app.use assigns "api/test" path, func
 
 
 var Sequelize = require("sequelize"); //Creates Sequelize application.
-var sequelize = new Sequelize("workoutlog", "postgres", "Bizarre1Postgres5511", { //Sequelize constructor takes all three params
+var sequelize = new Sequelize("workoutlog", "postgres", "yourpasswordhere", { //Sequelize constructor takes all three params
 	host: "localhost",		//Defines host as local host
 	dialect: "postgres"		//Defines dialect as Postgres
 });
