@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Workout Log</title>
-
+		<link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Below is jQuery, which is necessary for Bootstrap's JavaScript plugins -->
 		<script src="./bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -25,10 +25,66 @@
 		<div class="container">
 			<div class="tab-content">
 				<div class="tab-pane active" id="home">
-					<h2>Hello Workout Log!</h2>
+					<h2>Workout Log</h2>
+					<div id="forLogin">
+						<button data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Login</button>
+						<button data-toggle="modal" data-target="#signup-modal" class="btn btn-primary">Sign Up</button>
+					</div>
+					<div id="forLogout" style="display: none;">
+						<button class="btn btn-primary">Logout</button>
+					</div>
 				</div>
 			</div>	
 		</div>
+
+		<!-- Login Modal -->
+		<div class="modal fade" id="login-modal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Login</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger" style="display: none;" role="alert" id="li_error"></div>
+						<label for="li_username">Username:</label>
+						<input id="li_username">
+						<label for="li_password">Password:</label>
+						<input type="password" id="li_password">
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button id="login" type="button" class="btn btn-primary">Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Sign Up Modal -->
+		<div class="modal fade" id="signup-modal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Sign Up</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger" role="alert" style="display: none;" id="su_error"></div>
+						<label for="su_username">Username:</label>
+						<input id="su_username">
+						<label for="su_password">Password:</label>
+						<input type="password" id="su_password">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button id="signup" type="button" class="btn btn-primary"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
 
 		<script type="text/javascript" src="app.js"></script>
 	</body>
