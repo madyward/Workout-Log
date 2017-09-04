@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 //In short, the two below lines create an express application:
 var express = require("express");  //require("express") requires the node package, express.
 var app = express();	//app object (from express package) is defined by express() as a function.
@@ -13,6 +15,8 @@ User.sync(); //sync({ force: true }) to drop, then create again each time app st
 app.use(bodyParser.json());
 app.use(require("./middleware/headers"));	//app.use is used to setup the specified middleware. The require 
 									//callback function grabs "./middleware/headers" (js file path). ^^^^^
+
+app.use(require("./middleware/validate-session"));									
 app.use("/api/user", require("./routes/user"));
 app.use("/api/login", require("./routes/session")); //login route
 app.use("/api/test", function(req, res){	//app.use assigns "api/test" path, function with request, respond
