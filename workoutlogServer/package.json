@@ -9,6 +9,7 @@
   "author": "Madyson Ward",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "pg": "^4.5.7",
