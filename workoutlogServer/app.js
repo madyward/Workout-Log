@@ -22,6 +22,7 @@ app.use(require("./middleware/validate-session"));
 app.use("/api/user", require("./routes/user"));
 app.use("/api/login", require("./routes/session")); //login route
 app.use("/api/definition", require("./routes/definition"));
+app.use("/api/log", require("./routes/log"));
 app.use("/api/test", function(req, res){	//app.use assigns "api/test" path, function with request, respond
 	res.send("Hello World!");		//parameters responds back with the send event.. "Hello World!"
 });
