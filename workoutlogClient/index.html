@@ -32,7 +32,7 @@
 			</div>	
 		</div>
 
-		<!-- Define Modal -->
+		<!-- Define Tab -->
 		<div class="tab-pane" id="define">
 			<h2>Define</h2>
 			<label for="def-description">Description</label>
@@ -44,6 +44,24 @@
 				<option>Reps</option>
 			</select>
 			<button id="def-save" class="btn btn-primary">Save</button>
+		</div>
+
+		<!-- Log -->
+		<div class="tab-pane" id="log">
+			<h2>Log</h2>
+			<label>Result</label>
+			<input type="text" class="form-control" id="log-result">
+			<label>Workout Select:</label>
+			<select class="form-control" id="log-definition">
+			</select>
+			<label>notes</label>
+			<textarea class="form-control" id="log-description" rows="3"></textarea>
+			<button id="log-save" class="btn btn-primary">Save</button>
+		</div>
+		<div class="tab-pane">
+			<h2>History</h2>
+			<ul class="list-group" id="history-list">
+			</ul>
 		</div>
 
 		<!-- Login Modal -->
@@ -101,5 +119,6 @@
 		<script src="./app.js"></script>
 		<script src="./user/auth.js"></script>
 		<script src="./workouts/define.js"></script>
+		<script src="./workouts/log.js"></script>
 	</body>
 </html>
