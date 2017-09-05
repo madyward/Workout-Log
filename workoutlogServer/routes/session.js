@@ -1,9 +1,8 @@
 var router = require("express").Router();
 var sequelize = require("../db.js");
-var User = sequelize.import("../models/user");
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
-
+var User = sequelize.import("../models/user.js");
 
 
 router.post("/", function(req, res){
@@ -18,12 +17,12 @@ router.post("/", function(req, res){
 							message: "successfully authenticated",
 							sessionToken: token
 						});
-					} else {
+					}else {
 						res.status(500).send({ error: "failed to authenticate" });
 					}
 				});
 			} else {
-				res.status(500).send( { error: "failed to authenticate"});
+				res.status(500).send({ error: "failed to authenticate"});
 			}
 		},
 		function(err){
