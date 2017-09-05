@@ -1,7 +1,7 @@
 var router = require("express").Router();
-var sequelize = require("../db.js");
-var User = sequelize.import("../models/user.js");
-var Definition = sequelize.import("../models/definition.js");
+var sequelize = require("../db");
+var User = sequelize.import("../models/user");
+var Definition = sequelize.import("../models/definition");
 
 router.post("/", function(req, res){
 	//variables
@@ -22,8 +22,8 @@ router.post("/", function(req, res){
 			//send response as json
 			res.json({
 				definition: definition
-			})
-		}
+			});
+		},
 
 		//createError function
 		function createError(err){
@@ -46,7 +46,7 @@ router.get("/", function(req, res){
 		function findAllSuccess(data){
 			//console.log(data);
 			res.json(data);
-		}
+		},
 
 		//error
 		function findAllError(err){

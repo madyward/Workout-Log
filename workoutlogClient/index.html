@@ -11,7 +11,7 @@
 		<ul class="nav nav-tabs">
 			<li><a href="#home" id="loginout" class="disabled" data-toggle="tab">Login</a></li>
 			<!--<li class="active"><a href="#home" data-toggle="tab">Home</a></li> -->
-			<li><a href="#define" class="disabled" data-toggle="tab">Define</a></li>
+			<li><a href="#define" data-toggle="tab">Define</a></li>
 			<li><a href="#log" class="disabled" data-toggle="tab">Log</a></li>
 			<li><a href="#history" class="disabled" data-toggle="tab">View History</a></li>
 			<li><a href="#" id="testAPI">Test API</a></li>
@@ -30,6 +30,20 @@
 					</div>
 				</div>
 			</div>	
+		</div>
+
+		<!-- Define Modal -->
+		<div class="tab-pane" id="define">
+			<h2>Define</h2>
+			<label for="def-description">Description</label>
+			<textarea class="form-control" id="def-description" rows="3"></textarea>
+			<label for="def-logtype">Log work by</label>
+			<select class="form-control" id="def-logtype">
+				<option>Time</option>
+				<option>Weight</option>
+				<option>Reps</option>
+			</select>
+			<button id="def-save" class="btn btn-primary">Save</button>
 		</div>
 
 		<!-- Login Modal -->
@@ -86,5 +100,6 @@
 		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="./app.js"></script>
 		<script src="./user/auth.js"></script>
+		<script src="./workouts/define.js"></script>
 	</body>
 </html>
