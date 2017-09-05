@@ -23,9 +23,11 @@ $(function(){
 			signup.done(function(data){
 				if(data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
+					console.log("You made it!");
+					console.log(data.sessionToken);
 				}
 				$("#signup-modal").modal("hide");
-				$(".disabled").removeClass("diabled");
+				$(".disabled").removeClass("disabled");
 				$("#loginout").text("Logout");
 			}).fail(function(){
 				$("#su_error").text("There was an issue with sign up").show();
@@ -35,7 +37,8 @@ $(function(){
 
 		//Loginout Method:
 
-		//Bind Events:
-		$("#signup").on("click", WorkoutLog.signup);
+		
 	})
+	//Bind Events:
+	$("#signup").on("click", WorkoutLog.signup)
 });
