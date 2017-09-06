@@ -38,6 +38,9 @@ $(function(){
 				});
 				logger.done(function(data){
 					WorkoutLog.log.workouts.push(data);
+					$("#log-description").val("");
+					$("#log-result").val("");
+					$('a[href="#history"]').tab("show");
 				})
 			},
 			fetchAll: function(){
