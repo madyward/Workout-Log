@@ -8,15 +8,18 @@
 		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
+		<!-- NAV -->
 		<ul class="nav nav-tabs">
+			<a href="#update-log" data-toggle="tab" class="disabled" type="hidden"></a>
 			<li><a href="#home" id="loginout" class="disabled" data-toggle="tab">Login</a></li>
 			<!--<li class="active"><a href="#home" data-toggle="tab">Home</a></li> -->
 			<li><a href="#define" class="disabled" data-toggle="tab">Define</a></li>
 			<li><a href="#log" class="disabled" data-toggle="tab">Log</a></li>
 			<li><a href="#history" class="disabled" data-toggle="tab">View History</a></li>
 			<!-- <li><a href="#" id="testAPI">Test API</a></li> -->
-
 		</ul>
+
+		<!-- LOGIN/SIGN UP -->
 		<div class="container">
 			<div class="tab-content">
 				<div class="tab-pane active" id="home">
@@ -29,10 +32,8 @@
 						<button class="btn btn-primary">Logout</button>
 					</div>
 				</div>
-			
-		
-
-			<!-- Define Tab -->
+					
+			<!-- DEFINE TAB -->
 				<div class="tab-pane fade" id="define">
 					<h2>Define</h2>
 					<label for="def-description">Description</label>
@@ -45,7 +46,7 @@
 					</select>
 					<button id="def-save" class="btn btn-primary">Save</button>
 				</div>
-			<!-- Log -->
+			<!-- LOG -->
 				<div class="tab-pane fade" id="log">
 					<h2>Log</h2>
 					<label>Result</label>
@@ -57,6 +58,22 @@
 					<textarea class="form-control" id="log-description" rows="3"></textarea>
 					<button id="log-save" class="btn btn-primary">Save</button>
 				</div>
+			<!-- UPDATE A WORKOUT SESSION -->
+				<div class="tab-pane fade" id="update-log">
+					<h2>Log Update</h2>
+					<label>Result</label>
+					<input type="hidden" class="form-control" id="update-id">
+					<input type="text" class="form-control" id="update-result">
+					<label>Workout Select:</label>
+					<select class="form-control" id="update-definition">
+					</select>
+					<label>Notes</label>
+					<textarea class="form-control" id="update-description" rows="3"></textarea>
+					<br>
+					<button id="log-update" class="btn btn-primary">Save</button>
+				</div>
+
+			<!-- HISTORY -->	
 				<div class="tab-pane fade" id="history">
 					<h2>History</h2>
 					<ul class="list-group" id="history-list">
@@ -64,7 +81,7 @@
 				</div>
 			</div>		
 	
-			<!-- Login Modal -->
+			<!-- LOGIN MODAL -->
 			<div class="modal fade" id="login-modal" role="dialog">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -87,7 +104,7 @@
 				</div>
 			</div>
 	</div>
-			<!-- Sign Up Modal -->
+			<!-- SIGN UP MODAL -->
 			<div class="modal fade" id="signup-modal" role="dialog">
 				<div class="modal-dialog">
 					<div class="modal-content">

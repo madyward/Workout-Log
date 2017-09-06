@@ -46,6 +46,23 @@ router.get("/", function(req, res){
 	);
 });
 
+//This will retrieve one workout specified by the log id
+router.get("/:id", function(req, res){
+	var data = req.params.id;
+	//console.log(data); <---here for testing purposes
+	Log
+	.findOne({
+		where: {id: data}
+	}).then(
+		function getSucess(updateData){
+			res.json(updateData);
+		},
+		function getError(err){
+			res.send(500, err.message);
+		}
+	);
+});
+
 router.delete("/", function(req, res){
 	var data = req.body.log.id;
 	Log
@@ -58,7 +75,7 @@ router.delete("/", function(req, res){
 		function deleteLogError(err){
 		res.send(500, err.message);
 		}
-	),
+	)
 });
 
 module.exports = router;
