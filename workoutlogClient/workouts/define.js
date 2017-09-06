@@ -8,7 +8,7 @@ $(function(){
 					type: $("#def-logtype").val()
 				};
 				var postData = {definition: def};
-				var define = $.ajax({
+			var define = $.ajax({
 					type: "POST",
 					url: WorkoutLog.API_BASE + "definition",
 					data: JSON.stringify(postData),
@@ -25,9 +25,11 @@ $(function(){
 					headers: {
 						"authorization": window.localStorage.getItem("sessionToken")
 					}
-				}).done(function(data){
+				})
+				.done(function(data){
 					WorkoutLog.definition.userDefinitions = data;
-				}).fail(function(err){
+				})
+				.fail(function(err){
 					console.log(err);
 				});
 			}

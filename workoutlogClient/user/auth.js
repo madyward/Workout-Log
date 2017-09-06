@@ -23,13 +23,22 @@ $(function(){
 			signup.done(function(data){
 				if (data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
+					WorkoutLog.definition.fetchAll();
+					WorkoutLog.log.fetchAll();
+					
 					console.log("You made it!");
 					console.log(data.sessionToken);
 				}
 				$("#signup-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
-			//	$("#loginout").text("Logout");
-			}).fail(function(){
+				$("#loginout").text("Logout");
+				//go to define tab
+				$(".nav-tabs a[href='#define']").tab("show");
+
+				$("#su_username").val("");
+				$("#su_password").val("");
+			})
+			.fail(function(){
 				$("#su_error").text("There was an issue with sign up").show();
 			});
 		},
@@ -41,7 +50,7 @@ $(function(){
 			var user = { user: {
 				username: username,
 				password: password
-			}}
+			}};
 
 			//Login POST:
 			var login = $.ajax({
@@ -55,13 +64,16 @@ $(function(){
 			login.done(function(data){
 				if (data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
+					WorkoutLog.definition.fetchAll();
+					WorkoutLog.log.fetchAll();
 				}
 				$("#login-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
 				$("#loginout").text("Logout");
-			}).fail(function(){
-				$("#li_error").text("There was an issue with sign up.").show();
 			})
+			.fail(function(){
+				$("#li_error").text("There was an issue with your username or password.").show();
+			});
 
 		},
 
@@ -75,7 +87,7 @@ $(function(){
 		}
 
 		
-	})
+	});
 	//Bind Events:
 	$("#login").on("click", WorkoutLog.login);
 	$("#signup").on("click", WorkoutLog.signup);

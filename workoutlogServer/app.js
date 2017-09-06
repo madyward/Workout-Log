@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 //In short, the two below lines create an express application:
-var express = require("express");  //require("express") requires the node package, express.
+var express = require("express");  //require("express") requires the web package application, express.
 var app = express();	//app object (from express package) is defined by express() as a function.
 var bodyParser = require("body-parser");
 var sequelize = require("./db");
