@@ -45,7 +45,7 @@ $(function(){
 		}
 	});
 	//bind tab change events
-	$("a[data-toggle='tab']").on("shown.bs.tab", function(e){
+	$('a[data-toggle="tab"]').on("shown.bs.tab", function(e){
 		var target = $(e.target).attr("href"); //actived tab
 		if (target === "#log"){
 			WorkoutLog.log.setDefinitions();
@@ -70,7 +70,7 @@ $(function(){
 
 	//bind tab change events
 	//bootstrap tab -- binding to a bootstrap event
-	$("a[data-toggle:'tab']").on("shown.bs.tab", function(e){
+	$('a[data-toggle="tab"]').on("shown.bs.tab", function(e){
 		var target = $(e.target).attr("href"); //activated tab
 		if (target === "#log"){
 			WorkoutLog.log.setDefinitions();
