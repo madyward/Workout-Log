@@ -5,10 +5,7 @@ var express = require("express");  //require("express") requires the web package
 var app = express();	//app object (from express package) is defined by express() as a function.
 var bodyParser = require("body-parser");
 var sequelize = require("./db");
-
-
 var User = sequelize.import("./models/user");
-
 
 
 //User.sync(); //sync({ force: true }) to drop, then create again each time app starts!
