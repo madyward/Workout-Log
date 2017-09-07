@@ -3,15 +3,15 @@ $(function(){
 		log: {
 			workouts: [],
 
-			setDefinitions: function(){
+			setDefinitions: function(type){
 				var defs = WorkoutLog.definition.userDefinitions;
 				var len = defs.length;
 				var opts;
 				for (var i = 0; i < len; i++){
 					opts += "<option value ='" + defs[i].id + "'>" + defs[i].description + "</option>";
 				}
-				$("#log-definition").children().remove();
-				$("#log-definition").append(opts);
+				$("#" + type + "-definition").children().remove();
+				$("#" + type + "log-definition").append(opts);
 			},
 			setHistory: function(){
 				var history = WorkoutLog.log.workouts;
@@ -87,6 +87,12 @@ $(function(){
 					data: JSON.stringify(updateLogData),
 					contentType: "application/json"
 				});
+				updater.done(function(data){
+				$("#update-description").val("");
+				$("#update-result").val("");
+				$('a[href="#history"]').tab("show");
+				})
+
 			},
 //COMPLETE ABOVE
 
