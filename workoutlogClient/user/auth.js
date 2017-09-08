@@ -34,8 +34,8 @@ $(function(){
 				$(".hidden").removeClass("hidden");
 				$(".tab1").show();
 				$("#loginout").text("Logout");
-				$("#defineTab").text("Define Workouts");
-				$("#logTab").text("Log Workout");
+				$("#defineTab").text("Define Rides");
+				$("#logTab").text("Riding Log");
 				$("#historyTab").text("View History");
 				//go to define tab
 				$(".nav-tabs a[href='#define']").tab("show");
@@ -78,8 +78,8 @@ $(function(){
 				$(".hidden").removeClass("hidden");
 				$(".tab1").show();
 				$("#loginout").text("Logout");
-				$("#defineTab").text("Define Workouts");
-				$("#logTab").text("Log Your Workout");
+				$("#defineTab").text("Define Rides");
+				$("#logTab").text("Riding Log");
 				$("#historyTab").text("View History");		
 				$("#li_username").val("");
 				$("#li_password").val("");
