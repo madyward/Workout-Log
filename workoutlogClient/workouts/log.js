@@ -11,16 +11,20 @@ $(function(){
 					opts += "<option value ='" + defs[i].id + "'>" + defs[i].description + "</option>";
 				}
 				$("#" + type + "-definition").children().remove();
-				$("#" + type + "log-definition").append(opts);
+				$("#" + type + "-definition").append(opts);
 			},
 			setHistory: function(){
 				var history = WorkoutLog.log.workouts;
 				var len = history.length;
 				var lis = "";
 				for (var i = 0; i < len; i++){
-					lis += "<li class='list-group-item'>" + history[i].def + "-" + history[i].result + "" + "<div class='pull-right'>" + 
-					"<button id='" + history[i].id + "' class='update'><strong>U</strong></button>" + "<button id='" +
-					history[i].id + "' class='remove'><strong>X</strong></button>" + "</div></li>";
+					lis += "<li class='list-group-item'>" + 
+					history[i].def + " - " + 
+					history[i].result + " " + 
+					"<div class='pull-right'>" + 
+						"<button id='" + history[i].id + "' class='update'><strong>U</strong></button>" + 
+						"<button id='" + history[i].id + "' class='remove'><strong>X</strong></button>" + 
+					"</div></li>";
 				}
 				/*for (var i = 0; i < len; i++){
 					lis += "<li class='list-group-item'>" + history[i].def + "-" + history[i].result + "</li>";
@@ -72,7 +76,7 @@ $(function(){
 					id: $("#update-id").val(),
 					desc: $("#update-description").val(),
 						result: $("#update-result").val(),
-						def: $("#update-definition option-selected").text()
+						def: $("#update-definition option:selected").text()
 				}
 				for (var i = 0; i < WorkoutLog.log.workouts.length; i++){
 					if (WorkoutLog.log.workouts[i].id == updateLog.id){

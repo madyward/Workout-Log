@@ -85,7 +85,8 @@ $(function(){
 		loginout: function(){
 			if (window.localStorage.getItem("sessionToken")){
 				window.localStorage.removeItem("sessionToken");
-				$("#loginout").text("Login");
+				window.location.reload(true);
+				//$("#loginout").text("Login");
 			}
 			//TODO: On logout, make sure stuff is disabled.
 		}
