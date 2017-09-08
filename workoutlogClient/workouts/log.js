@@ -98,7 +98,6 @@ $(function(){
 				})
 
 			},
-//COMPLETE ABOVE
 
 
 			delete: function(){
