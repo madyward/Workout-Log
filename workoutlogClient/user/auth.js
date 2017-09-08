@@ -32,6 +32,7 @@ $(function(){
 				$("#signup-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
 				$(".hidden").removeClass("hidden");
+				$(".tab1").show();
 				$("#loginout").text("Logout");
 				$("#defineTab").text("Define Workouts");
 				$("#logTab").text("Log Workout");
@@ -75,6 +76,7 @@ $(function(){
 				$("#login-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
 				$(".hidden").removeClass("hidden");
+				$(".tab1").show();
 				$("#loginout").text("Logout");
 				$("#defineTab").text("Define Workouts");
 				$("#logTab").text("Log Your Workout");
