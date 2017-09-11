@@ -15,14 +15,14 @@ var User = sequelize.import("./models/user");
 //User.sync({force: true});
 sequelize.sync();
 app.use(bodyParser.json());	//app.use is the configuration for express
-app.use(require("./middleware/headers"));	//app.use is used to setup the specified middleware. The require 
-									//callback function grabs "./middleware/headers" (js file path). ^^^^^
+app.use(require("./middleware/headers"));	//app.use is used to configure the specified middleware. The callback 
+										//function, require, grabs "./middleware/headers" (js file path). ^^^^^
 
-app.use(require("./middleware/validate-session"));	//validate-session is to validate each request								
-app.use("/api/user", require("./routes/user"));
+app.use(require("./middleware/validate-session"));	//validate-session is to verify requests before all else!
+app.use("/api/user", require("./routes/user")); //Sign Up route
 app.use("/api/login", require("./routes/session")); //login route
-app.use("/api/log", require("./routes/log"));
-app.use("/api/definition", require("./routes/definition"));
+app.use("/api/log", require("./routes/log")); //log workout route
+app.use("/api/definition", require("./routes/definition")); //define workout route
 app.use("/api/test", function(req, res){	//app.use assigns "api/test" path, function with request, respond
 	res.send("Hello World!");		//parameters responds back with the send event.. "Hello World!"
 });

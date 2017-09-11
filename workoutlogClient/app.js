@@ -21,22 +21,21 @@ $(function(){
 		var userDefinitions = [];
 		var setAuthHeader = function(sessionToken) {
 			window.localStorage.setItem("sessionToken", sessionToken);
-			//set the authorization header
-			//this can be done on individual calls
-			//here we showcase ajaxSetup as a global tool
+			/*Set the authorization header. This can be done on individual calls*/
+			/*Here, we showcase ajaxSetup as a global tool:*/
 			$.ajaxSetup({
 				"headers": {
 					"Authorization": sessionToken
 				}
 			});
 		};
-		//public
+		/*Public*/
 		return {
 			API_BASE: API_BASE,
 			setAuthHeader: setAuthHeader
 		};
 	})(jQuery);
-	//ensure .disabled aren't clickable
+	/*Ensure .disabled aren't clickable*/
 	$('.nav-tabs a[data-toggle="tab"]').on("click", function(e){
 		var token = window.localStorage.getItem("sessionToken");
 		if ($(this).hasClass("disabled") && !token){
@@ -44,7 +43,7 @@ $(function(){
 			return false;
 		}
 	});
-	//bind tab change events
+	/*Bind tab change events*/
 	$('a[data-toggle="tab"]').on("shown.bs.tab", function(e){
 		var target = $(e.target).attr("href"); //actived tab
 		if (target === "#log"){
@@ -59,7 +58,7 @@ $(function(){
 	});
 
 
-	//bind enter key
+	/*Bind enter key*/
 	$(document).on("keypress", function(e){
 		if(e.which === 13) { //enter key
 			if ($("#signup-modal").is(":visible")){
@@ -71,8 +70,8 @@ $(function(){
 		}
 	});
 
-	//bind tab change events
-	//bootstrap tab -- binding to a bootstrap event
+	/*Bind tab change events*/
+	/*Bootstrap tab -- binding to a bootstrap event*/
 	$('a[data-toggle="tab"]').on("shown.bs.tab", function(e){
 		var target = $(e.target).attr("href"); //activated tab
 		if (target === "#log"){
@@ -83,11 +82,11 @@ $(function(){
 		}
 	})
 
-	//set header if we
+	/*Set header if we*/
 	var token = window.localStorage.getItem("sessionToken");
 	if (token){
 		WorkoutLog.setAuthHeader(token);
 	}
-	//expose this to the other workoutlog modules
+	/*Expose this to the other workoutlog modules*/
 	window.WorkoutLog = WorkoutLog;
 });

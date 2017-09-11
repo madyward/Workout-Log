@@ -39,11 +39,11 @@ $(function(){
 			}
 		}
 	});
-	//bindings
+	/*Bindings*/
 	$("#def-save").on("click", WorkoutLog.definition.create);	//When the Save button is clicked, it's attached to 
 																										//definition.create
 
-	//fetch definitions if we are already authenticated and refreshed
+	/*Fetch definitions if we are already authenticated and refreshed*/
 	if (window.localStorage.getItem("sessionToken")){ //sessionToken is checked locally (localStorage), and retrieved if so. 
 		WorkoutLog.definition.fetchAll();
 	}

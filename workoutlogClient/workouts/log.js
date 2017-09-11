@@ -113,11 +113,11 @@ $(function(){
 					data: JSON.stringify(deleteData),
 					contentType: "application/json"
 				});
-				//removes list item
-				//references button then grabs closet li
+				/*Removes list item*/
+				/*References button then grabs closet li*/
 				$(this).closest("li").remove();
 
-				//deletes item out of workouts array
+				/*Deletes item out of workouts array*/
 				for (i = 0; i < WorkoutLog.log.workouts.length; i++){
 					if (WorkoutLog.log.workouts[i].id == thisLog.id){
 						WorkoutLog.log.workouts.splice(i, 1);
@@ -146,7 +146,7 @@ $(function(){
 		}
 	})
 
-	//click the button and create a log entry
+	/*Click the button and create a log entry*/
 	$("#log-save").on("click", WorkoutLog.log.create);
 	$("#history-list").delegate(".remove", "click", WorkoutLog.log.delete);	//.delegate has the same "click" event as .on,
 														//as well as a function (on the above line - WorkoutLog.log.delete). 

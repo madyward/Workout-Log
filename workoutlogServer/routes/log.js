@@ -5,14 +5,14 @@ var User = sequelize.import("../models/user");
 var Definition = sequelize.import("../models/definition");
 
 router.post("/", function(req, res){
-	//req has some body properties that have a username and password
+	/*req has some body properties that have a username and password*/
 	console.log(req.body);
 	var description = req.body.log.desc;
 	var result = req.body.log.result;
 	var user = req.user;
 	var definition = req.body.log.def;
 
-	//use sequelize model to create log
+	/*Use sequelize model to create log*/
 	Log
 	.create({
 		description: description,
@@ -32,8 +32,9 @@ router.post("/", function(req, res){
 
 router.get("/", function(req, res){
 	var userid = req.user.id;
+
 	Log
-	.findAll({
+	.findAll({	//findAll is another SQL query. findAll responds w/ all data for that user's id
 		where: {owner: userid}
 	})
 	.then(
@@ -47,12 +48,12 @@ router.get("/", function(req, res){
 	);
 });
 
-//This will retrieve one workout specified by the log id
-router.get("/:id", function(req, res){
+/*Retrieve one workout specified by the log id*/
+router.get("/:id", function(req, res){	//Sends a get request to the specific location ("/:id")
 	var data = req.params.id;
 	//console.log(data); <---here for testing purposes
 	Log
-	.findOne({
+	.findOne({	//Find one specific object in database that matches the ID
 		where: {id: data}
 	}).then(
 		function getSuccess(updateData){
@@ -64,8 +65,8 @@ router.get("/:id", function(req, res){
 	);
 });
 
-//This will return data from the log that was updated
-router.put("/", function(req, res){
+/*Return data from the log that was updated*/
+router.put("/", function(req, res){	//.put returns all data from the specific log that was updated
 	var description = req.body.log.desc;
 	var result = req.body.log.result;
 	var data = req.body.log.id;
@@ -73,13 +74,14 @@ router.put("/", function(req, res){
 	console.log(req);
 
 	Log
-		.update(
+		.update( //.update is another SQL query. It takes two arguements 
 		{
 			description: description,
-			result: result,
+			result: result,									//Argument #1
 			def: definition
 		},
-		{where: {id: data}}
+		{where: {id: data}}									//Argument #2
+
 		).then(
 			function updateSuccess(updatedLog){
 				res.json(updatedLog);
@@ -90,7 +92,8 @@ router.put("/", function(req, res){
 		)
 });
 
-router.delete("/", function(req, res){
+
+router.delete("/", function(req, res){	
 	var data = req.body.log.id;
 	Log
 	.destroy({

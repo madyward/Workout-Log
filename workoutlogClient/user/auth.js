@@ -1,25 +1,27 @@
 $(function(){
 	$.extend(WorkoutLog, {
-		//Sign Up Method:
+		/*Sign Up Method:*/
 		signup: function(){
-			//Username and Password variables:
+			/*Username and Password variables:*/
 			var username = $("#su_username").val();
 			var password = $("#su_password").val();
-			//User object:
+
+			/*User object:*/
 			var user = {	//Can also be...  var user = {user: {username: username, password: password}};
 				user: {
 					username: username,
 					password: password
 				}
 			};
-			//Sign Up post:
+			/*Sign Up post:*/
 			var signup = $.ajax({
 				type: "POST",
 				url: WorkoutLog.API_BASE + "user",
 				data: JSON.stringify(user),
 				contentType: "application/json"
 			});
-			//Sign Up done/fail:
+			
+			/*Sign Up done/fail:*/
 			signup.done(function(data){
 				if (data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
@@ -37,7 +39,7 @@ $(function(){
 				$("#defineTab").text("Define Rides"); //Define tab also now shows (as - Define Rides) once user is signed up
 				$("#logTab").text("Riding Log"); //Log tab now shows up (as - Riding Log), too, when user is signed up.
 				$("#historyTab").text("View History"); //And.. history tab shows (as  - View History) once user signed up
-				//go to define tab
+				/*Go to define tab*/
 				$(".nav-tabs a[href='#define']").tab("show");
 
 				$('a[href="#define"]').tab("show");
@@ -49,9 +51,9 @@ $(function(){
 				$("#su_error").text("There was an issue with sign up").show();
 			});
 		},
-		//Login Method:
+		/*Login Method:*/
 		login: function(){
-			//Login variables:
+			/*Login variables:*/
 			var username = $("#li_username").val();
 			var password = $("#li_password").val();
 			var user = { user: {
@@ -59,7 +61,7 @@ $(function(){
 				password: password
 			}};
 
-			//Login POST:
+			/*Login POST:*/
 			var login = $.ajax({
 				type: "POST",
 				url: WorkoutLog.API_BASE + "login",
@@ -67,7 +69,7 @@ $(function(){
 				contentType: "application/json"
 			});
 
-			//Login done/fail:
+			/*Login done/fail:*/
 			login.done(function(data){
 				if (data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
@@ -92,7 +94,7 @@ $(function(){
 
 		},
 
-		//Loginout Method:
+		/*Loginout (AKA logout) Method:*/
 		loginout: function(){
 			if (window.localStorage.getItem("sessionToken")){
 				window.localStorage.removeItem("sessionToken");
@@ -102,7 +104,7 @@ $(function(){
 
 		
 	});
-	//Bind Events:
+	/*Bind Events:*/
 	$("#login").on("click", WorkoutLog.login);
 	$("#signup").on("click", WorkoutLog.signup);
 	//Cleaner way to write the code here? $(signup).click(WorkoutLog.signup);
