@@ -1,10 +1,13 @@
-require("dotenv").config();
+require("dotenv").config(); //from the folder, node_modules/dotenv/ .... .env (env = environment) allows you to hide
+							//things. Essentially, put things in an environment that makes them unaccessible, unless
+							//the user has a JSON Web Token (jwt). The JWT acts as a hall pass might in a grade 
+																									//school setting.
 
 //In short, the two below lines create an express application:
 var express = require("express");  //require("express") requires the web package application, express.
 var app = express();	//app object (from express package) is defined by express() as a function.
-var bodyParser = require("body-parser");
-var sequelize = require("./db");
+var bodyParser = require("body-parser"); //body parser allows the server to find data & bring it back as json objects
+var sequelize = require("./db"); 
 var User = sequelize.import("./models/user");
 
 
@@ -30,3 +33,11 @@ app.listen(3000, function(){	//app object can now start a UNIX socket (two-way c
 	console.log("app is listening on port 3000");	//port 3000, which in this line, will print to the console.
 });
 
+
+//********************************************************
+//*** NOTE: Express is most often seen in the Server   *** 
+//*** side,but it can also be used on the Client side! ***
+//*** In your package.json file on the the Client side,***
+//*** you list "...../http-server" in "start" under    ***
+//*** "scripts".									   ***
+//********************************************************
