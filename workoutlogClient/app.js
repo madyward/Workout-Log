@@ -15,6 +15,9 @@
 	})
 }); */
 
+/*Use cancel button ids to create two if statements - if button .on "click", .then .addClass "active" to username field */
+
+
 $(function(){
 	var WorkoutLog = (function($, undefined){
 		var API_BASE = "http://localhost:3000/api/";

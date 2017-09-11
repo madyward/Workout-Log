@@ -2,18 +2,21 @@ $(function(){
 	$.extend(WorkoutLog, {
 		/*Sign Up Method:*/
 		signup: function(){
-			/*Username and Password variables:*/
+
+			/* Username and Password variables: */
 			var username = $("#su_username").val();
 			var password = $("#su_password").val();
 
-			/*User object:*/
+			/* User object: */
 			var user = {	//Can also be...  var user = {user: {username: username, password: password}};
 				user: {
 					username: username,
 					password: password
 				}
 			};
-			/*Sign Up post:*/
+			
+			
+			/* Sign Up post: */
 			var signup = $.ajax({
 				type: "POST",
 				url: WorkoutLog.API_BASE + "user",
