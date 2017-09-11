@@ -14,11 +14,11 @@ var User = sequelize.import("./models/user");
 //User.sync(); //sync({ force: true }) to drop, then create again each time app starts!
 //User.sync({force: true});
 sequelize.sync();
-app.use(bodyParser.json());
+app.use(bodyParser.json());	//app.use is the configuration for express
 app.use(require("./middleware/headers"));	//app.use is used to setup the specified middleware. The require 
 									//callback function grabs "./middleware/headers" (js file path). ^^^^^
 
-app.use(require("./middleware/validate-session"));									
+app.use(require("./middleware/validate-session"));	//validate-session is to validate each request								
 app.use("/api/user", require("./routes/user"));
 app.use("/api/login", require("./routes/session")); //login route
 app.use("/api/log", require("./routes/log"));

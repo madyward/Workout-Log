@@ -9,6 +9,14 @@ module.exports = function(sequelize, DataTypes){ //You can add in more informati
 	return sequelize.define("user",{
 		username: DataTypes.STRING,
 		passwordhash: DataTypes.STRING
+		//Can add on: firstName: DataTypes.STRING;
 	});
 	return User;
 };
+
+//In Postgres (PostgreSql), there are ORMs (columns for your database) that are already built in. These are:
+//																- id (integer)
+//																- username
+//																- passwordhash
+//																- createdAt
+//																- updatedAt

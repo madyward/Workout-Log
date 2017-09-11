@@ -25,3 +25,11 @@ sequelize.authenticate().then( //Require sequelize authentication. Authenticatio
 var User = sequelize.import("./models/user"); //
 
 module.exports = sequelize; //Exporting the Sequelize database, so it can be used within the other files/folders/etc.
+
+//********************************************************
+//*** NOTE: On line 3, you the first param is your db  ***
+//*** table. Right now, you only have one db table set ***
+//*** up, but you can have multiple, but adding one to ***
+//** Postgres, then changing the name of that first    ***
+//*** param to match!								   ***
+//********************************************************
