@@ -26,9 +26,7 @@ $(function(){
 						"<button id='" + history[i].id + "' class='remove'><strong>X</strong></button>" + 
 					"</div></li>";
 				}
-				/*for (var i = 0; i < len; i++){
-					lis += "<li class='list-group-item'>" + history[i].def + "-" + history[i].result + "</li>";
-				}*/
+
 				$("#history-list").children().remove();
 				$("#history-list").append(lis);
 			},
@@ -102,9 +100,11 @@ $(function(){
 
 			delete: function(){
 				var thisLog = {
-					//"this" is the button on the li (li = login)
-					//.attr("id") targets the value of the id attribute of button
-					id: $(this).attr("id")
+					//In the below line of code....
+					//(this) is the button on the li (li = login), and....
+					//.attr("id") targets the value of the id attribute of button.
+					id: $(this).attr("id") //An object must first be created for this to work (created above), so the db
+																	//can go through and target the id of that object.
 				};
 				var deleteData = {log: thisLog};
 				var deleteLog = $.ajax({
@@ -113,11 +113,11 @@ $(function(){
 					data: JSON.stringify(deleteData),
 					contentType: "application/json"
 				});
-				//removes list item
-				//references button then grabs closet li
+				/*Removes list item*/
+				/*References button then grabs closet li*/
 				$(this).closest("li").remove();
 
-				//deletes item out of workouts array
+				/*Deletes item out of workouts array*/
 				for (i = 0; i < WorkoutLog.log.workouts.length; i++){
 					if (WorkoutLog.log.workouts[i].id == thisLog.id){
 						WorkoutLog.log.workouts.splice(i, 1);
@@ -146,10 +146,16 @@ $(function(){
 		}
 	})
 
-	//click the button and create a log entry
+	/*Click the button and create a log entry*/
 	$("#log-save").on("click", WorkoutLog.log.create);
-	$("#history-list").delegate(".remove", "click", WorkoutLog.log.delete);	
-	$("#log-update").on("click", WorkoutLog.log.updateWorkout);
+	$("#history-list").delegate(".remove", "click", WorkoutLog.log.delete);	//.delegate has the same "click" event as .on,
+														//as well as a function (on the above line - WorkoutLog.log.delete). 
+													//It also has an extra parameter, that comes first. It is always a class
+													//So if you have three arguements/parameters, always use .delegate over
+													//.on       .... delegate is coded as:
+													//	.delegate(selector, eventType, handler)
+
+	$("#log-update").on("click", WorkoutLog.log.updateWorkout); //jQuery. (id or class of what you want to delete). 
 	$("#history-list").delegate(".update", "click", WorkoutLog.log.getWorkout);
 
 	if (window.localStorage.getItem("sessionToken")){

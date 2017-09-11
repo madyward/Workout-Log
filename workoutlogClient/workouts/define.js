@@ -8,7 +8,7 @@ $(function(){
 					type: $("#def-logtype").val()
 				};
 				var postData = {definition: def};
-			var define = $.ajax({
+				var define = $.ajax({
 					type: "POST",
 					url: WorkoutLog.API_BASE + "definition",
 					data: JSON.stringify(postData),
@@ -18,7 +18,8 @@ $(function(){
 					WorkoutLog.definition.userDefinitions.push(data.definition);
 					$("#def-description").val("");
 					$("#def-log").val("");
-					$('a[href="#log"]').tab("show");
+					$('a[href="#log"]').tab("show"); //Targets the log tab so once user has defined workout, they're 
+																							//taken to the log tab
 				});
 			},
 			fetchAll: function(){
@@ -38,12 +39,12 @@ $(function(){
 			}
 		}
 	});
-	//bindings
-	$("#def-save").on("click", WorkoutLog.definition.create);
+	/*Bindings*/
+	$("#def-save").on("click", WorkoutLog.definition.create);	//When the Save button is clicked, it's attached to 
+																										//definition.create
 
-	//fetch definitions if we are already authenticated and refreshed
-
-	if (window.localStorage.getItem("sessionToken")){
+	/*Fetch definitions if we are already authenticated and refreshed*/
+	if (window.localStorage.getItem("sessionToken")){ //sessionToken is checked locally (localStorage), and retrieved if so. 
 		WorkoutLog.definition.fetchAll();
 	}
 });
