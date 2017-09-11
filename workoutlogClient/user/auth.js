@@ -6,7 +6,7 @@ $(function(){
 			var username = $("#su_username").val();
 			var password = $("#su_password").val();
 			//User object:
-			var user = {
+			var user = {	//Can also be...  var user = {user: {username: username, password: password}};
 				user: {
 					username: username,
 					password: password
@@ -29,14 +29,14 @@ $(function(){
 					console.log("You made it!");
 					console.log(data.sessionToken);
 				}
-				$("#signup-modal").modal("hide");
-				$(".disabled").removeClass("disabled");
-				$(".hidden").removeClass("hidden");
-				$(".tab1").show();
-				$("#loginout").text("Logout");
-				$("#defineTab").text("Define Rides");
-				$("#logTab").text("Riding Log");
-				$("#historyTab").text("View History");
+				$("#signup-modal").modal("hide");	//This line gets the modal out of the way if the user has signed up
+				$(".disabled").removeClass("disabled");	//Removes the disabled class once user is signed up (so, now enabled)
+				$(".hidden").removeClass("hidden");	//Removes the hidden class once user is signed up (so, now shown)
+				$(".tab1").show();	//Elements with tab1 class are now shown
+				$("#loginout").text("Logout");	//Logout tab now shows (as - Logout) when user is signed up
+				$("#defineTab").text("Define Rides"); //Define tab also now shows (as - Define Rides) once user is signed up
+				$("#logTab").text("Riding Log"); //Log tab now shows up (as - Riding Log), too, when user is signed up.
+				$("#historyTab").text("View History"); //And.. history tab shows (as  - View History) once user signed up
 				//go to define tab
 				$(".nav-tabs a[href='#define']").tab("show");
 
@@ -44,6 +44,7 @@ $(function(){
 				$("#su_username").val("");
 				$("#su_password").val("");
 			})
+
 			.fail(function(){
 				$("#su_error").text("There was an issue with sign up").show();
 			});
@@ -104,6 +105,7 @@ $(function(){
 	//Bind Events:
 	$("#login").on("click", WorkoutLog.login);
 	$("#signup").on("click", WorkoutLog.signup);
+	//Cleaner way to write the code here? $(signup).click(WorkoutLog.signup);
 	$("#loginout").on("click", WorkoutLog.loginout);
 
 	if (window.localStorage.getItem("sessionToken")){
