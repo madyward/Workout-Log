@@ -78,7 +78,7 @@ $(function(){
 				}
 				for (var i = 0; i < WorkoutLog.log.workouts.length; i++){
 					if (WorkoutLog.log.workouts[i].id == updateLog.id){
-						WorkoutLog.log.workouts.splice(i, 1);
+						WorkoutLog.log.workouts.splice(i, 1, updateLog);
 					}
 				}
 				WorkoutLog.log.workouts.push(updateLog);
@@ -93,6 +93,7 @@ $(function(){
 				$("#update-description").val("");
 				$("#update-result").val("");
 				$('a[href="#history"]').tab("show");
+				console.log('click')
 				})
 
 			},
