@@ -1,5 +1,5 @@
 /*Use cancel button ids to create two if statements - if button .on "click", .then .addClass "active" to username field */
-
+//Add a cancel function???
 $(function(){
 	$.extend(WorkoutLog, {
 		/*Sign Up Method:*/
@@ -15,10 +15,7 @@ $(function(){
 					username: username,
 					password: password
 				}
-			};
-
-			/*  */
-
+			};	
 
 			/* Sign Up post: */
 			var signup = $.ajax({

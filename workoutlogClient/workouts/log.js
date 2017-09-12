@@ -22,8 +22,8 @@ $(function(){
 					history[i].def + " - " + 
 					history[i].result + " " + 
 					"<div class='pull-right'>" + 
-						"<button id='" + history[i].id + "' class='update'><strong>U</strong></button>" + 
-						"<button id='" + history[i].id + "' class='remove'><strong>X</strong></button>" + 
+						"<button id='" + history[i].id + "' class='update'><strong>Edit</strong></button>" + 
+						"<button id='" + history[i].id + "' class='remove'><strong>Delete</strong></button>" + 
 					"</div></li>";
 				}
 

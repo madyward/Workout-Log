@@ -51,22 +51,24 @@
 			<!-- LOG -->
 				<div class="tab-pane fade" id="log">
 					<h2>Ride Log</h2>
-					<label>Date:</label>
-					<input class="form-control" type="date" min="2017-09-01" id="date" required>
-					<label>Result:</label>
-					<input type="text" class="form-control" id="log-result">
-					<label>Ride Type:</label>
-					<select class="form-control" id="log-definition">
-					</select>
-					<label>Notes:</label>
-					<textarea class="form-control" id="log-description" rows="3"></textarea>
-					<br>
-					<button id="log-save" class="btn btn-primary">Save</button>
+						<label>Date:</label>
+						<input class="form-control" type="date" min="2017-09-01" id="date" required>
+						<label>Result:</label>
+						<input type="text" class="form-control" id="log-result" required>
+						<label>Ride Type:</label>
+						<select class="form-control" id="log-definition">
+						</select>
+						<label>Notes:</label>
+						<textarea class="form-control" id="log-description" rows="3"></textarea>
+						<br>
+						<button id="log-save" class="btn btn-primary">Save</button>
 				</div>
 			<!-- UPDATE A WORKOUT SESSION -->
 				<div class="tab-pane fade" id="update-log">
 					<h2>Log Update</h2>
 					<!-- <label>Date:</label> -->
+					<label>Date:</label>
+					<input class="form-control" type="date" min="2017-09-01" id="date" required>
 					<label>Result:</label>
 					<input type="hidden" class="form-control" id="update-id" autofocus>
 					<input type="text" class="form-control" id="update-result">
@@ -98,9 +100,9 @@
 						<div class="modal-body">
 							<div class="alert alert-danger" style="display: none;" role="alert" id="li_error"></div>
 							<label for="li_username">Username:</label>
-							<input id="li_username" autofocus>
+							<input type="text" required="" id="li_username" autofocus>
 							<label for="li_password">Password:</label>
-							<input type="password" id="li_password">
+							<input type="password" required="" id="li_password">
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal" id="li-cancel">Cancel</button>
