@@ -108,6 +108,11 @@ $(function(){
 
 		
 	});
+
+	$("#signup-modal").on("shown", function(){
+		$("#su_username").focus();
+	});
+
 	/*Bind Events:*/
 	$("#login").on("click", WorkoutLog.login);
 	$("#signup").on("click", WorkoutLog.signup);
