@@ -5,15 +5,17 @@ $(function(){
 		/*Sign Up Method:*/
 		signup: function(){
 
-			/* Username and Password variables: */
+			/* Username, Password, & DOB variables: */
 			var username = $("#su_username").val();
 			var password = $("#su_password").val();
+			var dob = $("#su_DOB").val();
 
 			/* User object: */
 			var user = {	//Can also be...  var user = {user: {username: username, password: password}};
 				user: {
 					username: username,
-					password: password
+					password: password,
+					dob: dob
 				}
 			};	
 
@@ -49,6 +51,7 @@ $(function(){
 				$('a[href="#define"]').tab("show");
 				$("#su_username").val("");
 				$("#su_password").val("");
+				$("#su_DOB").val("");
 			})
 
 			.fail(function(){
