@@ -83,7 +83,7 @@ $(function(){
 		if (target === "#history"){
 			WorkoutLog.log.setHistory();
 		}
-	})
+	});
 
 	/*Set header if we*/
 	var token = window.localStorage.getItem("sessionToken");
