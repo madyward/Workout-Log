@@ -125,11 +125,14 @@
 
 							<label for="su_username">Username:</label>
 							<input id="su_username" required>
-							<label for="su_DOB">Date of Birth:</label>
-							<input type="date" id="su_DOB" max="2003-09-15" aria-describedby="helpBlock" required>
-							<span class="help-block" id="helpBlock">If you are under the age of 14, you agree that you have received parental permission prior to signing up.</span>
 							<label for="su_password">Password:</label>
 							<input type="password" id="su_password" required>
+							<label for="su_DOB">Date of Birth:</label>
+							<input type="text" id="su_DOB" aria-describedby="helpBlock" required>
+							<span class="help-block" id="helpBlock">If you are under the age of 13, you agree that you have received parental permission prior to signing up.</span>
+						<!--	<label>
+								<input type="checkbox" id="su_parentConsent">
+							</label> -->
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal" id="su_cancel">Cancel</button>
@@ -145,6 +148,9 @@
 		<script src="./bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Include all compiled plugins, like below, or just individual files as needed. -->
 		<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<!-- jQuery UI -->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+		<!-- Self-Created JS Files -->
 		<script src="./app.js"></script>
 		<script src="./user/auth.js"></script>
 		<script src="./workouts/define.js"></script>

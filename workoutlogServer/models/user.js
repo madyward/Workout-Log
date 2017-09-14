@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes){ //You can add in more informati
 	return sequelize.define("user",{
 		username: DataTypes.STRING,
 		passwordhash: DataTypes.STRING,
-		dob: DataTypes.INTEGER
+		//dob: DataTypes.INTEGER
 		//Can add on: firstName: DataTypes.STRING;
 	});
 	return User;

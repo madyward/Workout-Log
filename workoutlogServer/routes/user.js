@@ -8,12 +8,12 @@ var jwt = require("jsonwebtoken");
 router.post("/", function(req, res){ //This is saying, when a user makes a POST request, respond with these instructions:
 	var username = req.body.user.username; //A request is an object, the body has a user object with a username field
 	var pass = req.body.user.password;		//and a password field.
-	var dob = req.body.user.dob;
+//	var dob = req.body.user.dob;
 
 	User.create({	//Sequelize method to create a...  ||
 		username: username, //username, which equals username, and...
 		passwordhash: bcrypt.hashSync(pass, 10), //password hash
-		dob: dob
+//		dob: dob
 	}).then( //.then creates a promise for success and an error
 		
 		function createSuccess(user){

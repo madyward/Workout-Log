@@ -15,7 +15,7 @@ router.post("/", function(req, res){
 	/*Use sequelize model to create log*/
 	Log
 	.create({
-		description: description,
+		desc: description,
 		result: result,
 		owner: user.id,
 		def: definition

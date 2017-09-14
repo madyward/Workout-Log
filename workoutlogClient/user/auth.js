@@ -1,5 +1,3 @@
-/*Use cancel button ids to create two if statements - if button .on "click", .then .addClass "active" to username field */
-//Add a cancel function???
 $(function(){
 	$.extend(WorkoutLog, {
 		/*Sign Up Method:*/
@@ -8,14 +6,14 @@ $(function(){
 			/* Username, Password, & DOB variables: */
 			var username = $("#su_username").val();
 			var password = $("#su_password").val();
-			var dob = $("#su_DOB").val();
+			//var dob = $("#su_DOB").val();
 
 			/* User object: */
 			var user = {	//Can also be...  var user = {user: {username: username, password: password}};
 				user: {
 					username: username,
 					password: password,
-					dob: dob
+				//	dob: dob
 				}
 			};	
 
@@ -51,7 +49,7 @@ $(function(){
 				$('a[href="#define"]').tab("show");
 				$("#su_username").val("");
 				$("#su_password").val("");
-				$("#su_DOB").val("");
+			//	$("#su_DOB").val("");
 			})
 
 			.fail(function(){
@@ -111,19 +109,58 @@ $(function(){
 
 		
 	});
-
+	/* Signup & Login Modal Autofocus Bind Events */
 	$("#signup-modal").on("shown.bs.modal", function(){
 		$("#su_username").focus();
-		$("#su_username").attr("required", true);
-		$("#su_DOB").attr("required", true);
+	},
+	function(){
+		$("#su_DOB").datepicker();
+		var $birth = $("#birthday");	//DOB input
+		var $parentsConsent = $("#parents-consent"); //Consent checkbox
+		var $consentContainer = $("#consent-container"); //Checkbox container
+
+		/* Create Date Picker Using jQuery UI: */
+		$birth.prop("type", "text").data("type", "date").datepicker({
+			dateFormat: "mm/dd/yy"	//Set date format (yy = 4 digits, y = 2 digits)
+		});
+		$birth.on("blur change", checkDate);	//DOB loses focus
+		function checkDate(){	//Declare checkDate function
+			var dob = this.value.split("/"); //Array from date
+			/* Pass toggleParentsConsent() the date of birth as a date object */
+			toggleParentsConsent(new Date(dob[0], dob[1], -1, dob[2]));
+		}
+		function toggleParentsConsent(date){	//Declare toggleParentsConsent function
+			if (isNaN(date)) return; //Stop if invalid date
+			var now = new Date();	//New date object: today
+			/* If difference (now minus DOB) < 13, toggle consent checkbox (doesn't count leap years)
+			To get 13 yrs = millisecs * secs * mins * hrs * days * yrs */
+			if ((now - date) < (1000 * 60 * 60 * 24 * 365 * 13)){ //If over 13 years old
+				$consentContainer.removeClass("hide");	//Removes hide class
+				$parentsConsent.focus(); //Give it focus
+			} else { //If under 13 years old
+				$consentContainer.addClass("hide"); //Add hide to class
+				$parentsConsent.prop("checked", false); //Set checked to false
+			}
+		};
 	});
 	$("#login-modal").on("shown.bs.modal", function(){
 		$("#li_username").focus();
 	});
 
-	/*Bind Events:*/
+	/* Other Bind Events:*/
 	$("#login").on("click", WorkoutLog.login);
-	$("#signup").on("click", WorkoutLog.signup);
+	$("#signup").on("click", function(){
+		var suUsername = $("#su_username").val() !== "";
+		var suPassword = $("#su_password").val() !== "";
+
+		if (suUsername && suPassword){
+			WorkoutLog.signup()
+		} else {
+			alert("Not authorized.");
+		}
+	}); 
+
+
 	//Cleaner way to write the code here? $(signup).click(WorkoutLog.signup);
 	$("#loginout").on("click", WorkoutLog.loginout);
 
